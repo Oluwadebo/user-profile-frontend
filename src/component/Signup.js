@@ -8,8 +8,8 @@ const Signup = () => {
   const navigate = useNavigate();
   const [allUser, setallUser] = useState([]);
   useEffect(() => {
-    if (localStorage.asmember) {
-      let detail = JSON.parse(localStorage.asmember);
+    if (localStorage.wwtbam) {
+      let detail = JSON.parse(localStorage.wwtbam);
       setallUser(detail);
     } else {
       setallUser([]);
@@ -21,39 +21,46 @@ const Signup = () => {
       Lastname: "",
       email: "",
       password: "",
+      gender: "",
     },
     onSubmit: (values) => {
-      let User = allUser.push(values);
       setallUser(allUser.push(values));
-      console.log(allUser);
-      localStorage.setItem("asmember", JSON.stringify(allUser));
-      navigate("/");
+      localStorage.setItem("wwtbam", JSON.stringify(allUser));
+      navigate("/Signin");
     },
     validationSchema: yup.object({
       firstname: yup
         .string()
         .required("This field is required")
-        .min(4, "must be greater than four"),
+        .min(4, "must be greater than three"),
       Lastname: yup
         .string()
         .required("This field is required")
-        .min(3, "must be greater than three"),
+        .min(3, "must be greater than two"),
       email: yup
         .string()
         .required("This field is required")
         .email("must be a valid email"),
+      gender: yup
+        .string()
+        .required("This field is required")
+        .min(4, "must be greater than three"),
       password: yup
         .string()
         .required("This field is required")
-        .min(5, "password is weak, must be greater than 5"),
+        .min(5, "password is weak, must be greater than six"),
     }),
   });
   return (
     <>
       <div className="container">
-        <div className="row">
-          <div className="col-8 mx-auto">
-            <h2 className="m-4"><b>Create an account</b></h2>
+        <div className="row mx-auto my-5">
+          <div className="shadow col-12 col-md-8 mx-auto px-4 pb-3 asd">
+            <h2 className="m-4 text-light">
+              <b>
+                <i>Create an account</i>
+              </b>
+            </h2>
             <form action="" onSubmit={formik.handleSubmit}>
               <div className="form-floating">
                 <input
@@ -76,7 +83,7 @@ const Signup = () => {
                 )}
                 <label>&#x1F464;&nbsp; Your firstname</label>
               </div>
-              <div className="form-floating mt-2">
+              <div className="form-floating my-3">
                 <input
                   type="text"
                   placeholder="Your Lastname"
@@ -97,7 +104,7 @@ const Signup = () => {
                 )}
                 <label>&#x1F464;&nbsp; Your Lastname</label>
               </div>
-              <div className="form-floating mt-2">
+              <div className="form-floating my-2">
                 <input
                   type="email"
                   placeholder="Your email"
@@ -118,7 +125,28 @@ const Signup = () => {
                 )}
                 <label>&#x1F4E7;&nbsp; Your email</label>
               </div>
-              <div className="form-floating mt-2">
+              <div className="form-floating my-3">
+                <select
+                  className={
+                    formik.errors.gender && formik.touched.gender
+                      ? "form-control is-invalid"
+                      : "form-control"
+                  }
+                  onChange={formik.handleChange}
+                  name="gender"
+                  onBlur={formik.handleBlur}
+                >
+                  <option value="MALE">MALE</option>
+                  <option value="FEMALE">FEMALE</option>
+                </select>
+                {formik.touched.gender && (
+                  <div style={{ color: "red" }} className="my-2">
+                    {formik.errors.gender}
+                  </div>
+                )}
+                <label>&#x1F4E7;&nbsp; Your gender</label>
+              </div>
+              <div className="form-floating my-3">
                 <input
                   type="password"
                   placeholder="Your password"
@@ -141,10 +169,9 @@ const Signup = () => {
                 <label>&#x1F512;&nbsp; Your password</label>
                 <button
                   type="submit"
-                  className="btn form-control py-3 mt-3"
-                  style={{ background: "#1FC69D", border: "none" }}
+                  className="btn btn-success form-control py-3 mt-3"
                 >
-                  Create account
+                  Sign-Up
                 </button>
               </div>
             </form>
