@@ -3,10 +3,12 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate();
   const [allUser, setallUser] = useState([]);
+  const [Error, setError] = useState("");
   useEffect(() => {
     if (localStorage.wwtbam) {
       let detail = JSON.parse(localStorage.wwtbam);
@@ -20,11 +22,22 @@ const Signup = () => {
       email: "",
       password: "",
     },
-    // onSubmit: (values) => {
-    //   setallUser(allUser.push(values));
-    //   localStorage.setItem("wwtbam", JSON.stringify(allUser));
-    //   navigate("/");
-    // },
+    onSubmit: (values) => {
+      let debo = JSON.parse(localStorage.getItem("wwtbam"));
+      if (values) {
+        for (const a of debo) {
+          let User = values;
+          if (a["email"] === User.email && a["password"] === User.password) {
+            localStorage.signinEmail = JSON.stringify(User.email);
+            localStorage.users = JSON.stringify(a);
+            navigate("/Dashboard");
+          } else {
+            let err = "User-Not-Found";
+            setError(err);
+          }
+        }
+      }
+    },
     validationSchema: yup.object({
       email: yup
         .string()
@@ -33,7 +46,7 @@ const Signup = () => {
       password: yup
         .string()
         .required("This field is required")
-        .min(5, "password is weak, must be greater than six"),
+        .min(5, "password is weak, must be greater than five"),
     }),
   });
   return (
@@ -42,8 +55,13 @@ const Signup = () => {
         <div className="row mx-auto my-5">
           <div className="shadow col-12 col-md-8 mx-auto px-4 pb-3 asd">
             <h2 className="m-4 text-light">
-              <b><i>SIGN-IN</i></b>
+              <b>
+                <i>SIGN-IN</i>
+              </b>
             </h2>
+            <p>
+              <b className="text-danger">{Error}</b>
+            </p>
             <form action="" onSubmit={formik.handleSubmit}>
               <div className="form-floating">
                 <input
@@ -93,6 +111,24 @@ const Signup = () => {
                 >
                   Sign-In
                 </button>
+              </div>
+              <div className="row mt-3">
+                <div className="col-md-12">
+                  <div className="row">
+                    <div className="col-8 text-light">
+                      <p style={{ opacity: "0.6" }}>Don't have an account?</p>
+                    </div>
+                    <div className="col-4">
+                      <p>
+                        <b>
+                          <Link to="/Signup" className="sig">
+                            Sign-Up
+                          </Link>
+                        </b>
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </form>
           </div>

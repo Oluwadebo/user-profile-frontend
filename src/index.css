@@ -18,3 +18,9 @@ code {
   border-radius: 10px;
   border: none;
 }
+.sig{
+  color: #1DCF9F;
+  opacity: 0.8;
+  float: right;
+  text-decoration: none;
+}

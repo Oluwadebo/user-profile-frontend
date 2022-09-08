@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -41,10 +42,7 @@ const Signup = () => {
         .string()
         .required("This field is required")
         .email("must be a valid email"),
-      gender: yup
-        .string()
-        .required("This field is required")
-        .min(4, "must be greater than three"),
+      gender: yup.string().required("This field is required"),
       password: yup
         .string()
         .required("This field is required")
@@ -104,7 +102,7 @@ const Signup = () => {
                 )}
                 <label>&#x1F464;&nbsp; Your Lastname</label>
               </div>
-              <div className="form-floating my-2">
+              <div className="form-floating my-3">
                 <input
                   type="email"
                   placeholder="Your email"
@@ -135,7 +133,9 @@ const Signup = () => {
                   onChange={formik.handleChange}
                   name="gender"
                   onBlur={formik.handleBlur}
+                  style={{ backgroundColor: "#F5F7FA" }}
                 >
+                  <option>&#x1F4B7;&nbsp; Your gender</option>
                   <option value="MALE">MALE</option>
                   <option value="FEMALE">FEMALE</option>
                 </select>
@@ -144,7 +144,7 @@ const Signup = () => {
                     {formik.errors.gender}
                   </div>
                 )}
-                <label>&#x1F4E7;&nbsp; Your gender</label>
+                <label>&#x1F4B7;&nbsp; Your gender</label>
               </div>
               <div className="form-floating my-3">
                 <input
@@ -173,6 +173,24 @@ const Signup = () => {
                 >
                   Sign-Up
                 </button>
+              </div>
+              <div className="row mt-3">
+                <div className="col-md-12">
+                  <div className="row">
+                    <div className="col-8 text-light">
+                      <p style={{ opacity: "0.6" }}>Already have an account?</p>
+                    </div>
+                    <div className="col-4">
+                      <p>
+                        <b>
+                          <Link to="/Signin" className="sig">
+                            Sign-In
+                          </Link>
+                        </b>
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
