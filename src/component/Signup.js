@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const Signup = () => {
   const navigate = useNavigate();
   const [allUser, setallUser] = useState([]);
+  const [Error, setError] = useState("");
   useEffect(() => {
     if (localStorage.wwtbam) {
       let detail = JSON.parse(localStorage.wwtbam);
@@ -25,9 +26,41 @@ const Signup = () => {
       gender: "",
     },
     onSubmit: (values) => {
-      setallUser(allUser.push(values));
-      localStorage.setItem("wwtbam", JSON.stringify(allUser));
-      navigate("/Signin");
+      let debo = JSON.parse(localStorage.getItem("wwtbam"));
+      setallUser(debo);
+      if (values) {
+        if (allUser == "") {
+          setallUser(allUser.push(values));
+          localStorage.setItem("wwtbam", JSON.stringify(allUser));
+          navigate("/Signin");
+        } else {
+          for (const a of allUser) {
+            let User = values;
+            if (a["email"] !== User.email && a["password"] !== User.password) {
+              setallUser(allUser.push(values));
+              localStorage.setItem("wwtbam", JSON.stringify(allUser));
+              navigate("/Signin");
+            } else {
+              if (
+                a["email"] === User.email &&
+                a["password"] === User.password
+              ) {
+                let err = "email and password already-in-use";
+                setError(err);
+              } else if (a["email"] === User.email) {
+                let err = "email-already-in-use";
+                setError(err);
+              } else if (a["password"] === User.password) {
+                let err = "password-already-in-use";
+                setError(err);
+              }
+            }
+          }
+        }
+      }
+      // setallUser(allUser.push(values));
+      // localStorage.setItem("wwtbam", JSON.stringify(allUser));
+      // navigate("/Signin");
     },
     validationSchema: yup.object({
       firstname: yup
@@ -52,13 +85,16 @@ const Signup = () => {
   return (
     <>
       <div className="container">
-        <div className="row mx-auto my-5">
+        <div className="row mx-auto mt-5">
           <div className="shadow col-12 col-md-8 mx-auto px-4 pb-3 asd">
             <h2 className="m-4 text-light">
               <b>
                 <i>Create an account</i>
               </b>
             </h2>
+            <p>
+              <b className="text-danger">{Error}</b>
+            </p>
             <form action="" onSubmit={formik.handleSubmit}>
               <div className="form-floating">
                 <input

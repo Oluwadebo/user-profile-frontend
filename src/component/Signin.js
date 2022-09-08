@@ -32,7 +32,8 @@ const Signup = () => {
             localStorage.users = JSON.stringify(a);
             navigate("/Dashboard");
           } else {
-            let err = "User-Not-Found";
+            let err =
+              "User-Not-Found, Please check for mistakes and try again.";
             setError(err);
           }
         }
