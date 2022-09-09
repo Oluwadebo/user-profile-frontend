@@ -58,9 +58,6 @@ const Signup = () => {
           }
         }
       }
-      // setallUser(allUser.push(values));
-      // localStorage.setItem("wwtbam", JSON.stringify(allUser));
-      // navigate("/Signin");
     },
     validationSchema: yup.object({
       firstname: yup
