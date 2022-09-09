@@ -24,6 +24,7 @@ const Signup = () => {
       email: "",
       password: "",
       gender: "",
+      score: "0",
     },
     onSubmit: (values) => {
       let debo = JSON.parse(localStorage.getItem("wwtbam"));
@@ -202,7 +203,7 @@ const Signup = () => {
                 <label>&#x1F512;&nbsp; Your password</label>
                 <button
                   type="submit"
-                  className="btn btn-success form-control py-3 mt-3"
+                  className="btn btn-success form-control py-3 mt-3 asd"
                 >
                   Sign-Up
                 </button>

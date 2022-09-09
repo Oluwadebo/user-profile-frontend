@@ -12,50 +12,30 @@ code {
   font-family: "Courier New", monospace;
 }
 
-.asd{
+.asd {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
   border-radius: 10px;
   border: none;
 }
-.sig{
-  color: #1DCF9F;
+.sig {
+  color: #1dcf9f;
   opacity: 0.8;
   float: right;
   text-decoration: none;
 }
-.tags {
-  position: absolute;
-  top: 5%;
-  left: 35%;
-  transform: translate(-50%, -50%);
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  margin: 0;
-  padding: 0;
-  color: transparent;
+.dsa {
+  background: rgba(248, 252, 3, 0.7);
+  backdrop-filter: blur(5px);
+  border-radius: 30px;
+  border: none;
 }
-.tags::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  color: white;
-  overflow: hidden;
-  border-right: 1px solid black;
-  animation: type 10s steps(14) infinite;
-  white-space: nowrap;
+.asda {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(5px);
+  border: none;
 }
-@keyframes type {
-  0% {
-    width: 0%;
-  }
-  50% {
-    width: 100%;
-  }
-  100% {
-    width: 0%;
-  }
+.sd {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
 }

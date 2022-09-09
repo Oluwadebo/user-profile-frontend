@@ -4,6 +4,7 @@ import Signup from "./component/Signup";
 import NotFound from "./component/NotFound";
 import Signin from "./component/Signin";
 import Dashboard from "./component/Dashboard";
+import Takequiz from "./component/assets/Takequiz";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Signup />} />
         <Route path="/Signin" element={<Signin />} />
         <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Takequiz" element={<Takequiz />} />
         <Route path="/Signup" element={<Navigate to="/" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
