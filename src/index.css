@@ -39,3 +39,15 @@ code {
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(5px);
 }
+.gose {
+  float: right;
+  animation: mover 2s infinite alternate;
+}
+@keyframes mover {
+  0% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(-40px);
+  }
+}

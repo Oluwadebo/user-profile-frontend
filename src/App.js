@@ -4,7 +4,7 @@ import Signup from "./component/Signup";
 import NotFound from "./component/NotFound";
 import Signin from "./component/Signin";
 import Dashboard from "./component/Dashboard";
-import Takequiz from "./component/assets/Takequiz";
+import Takequiz from "./component/Takequiz";
 
 function App() {
   return (

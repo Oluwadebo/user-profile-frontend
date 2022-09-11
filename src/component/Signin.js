@@ -1,7 +1,7 @@
 import React from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -50,6 +50,21 @@ const Signup = () => {
         .min(5, "password is weak, must be greater than five"),
     }),
   });
+  const toggle = useRef();
+  const i = useRef();
+  const password = useRef();
+
+  const showHide = () => {
+    if (password.current.type === "password") {
+      password.current.setAttribute("type", "text");
+      toggle.current.classList.add("hide");
+      i.current.classList = "fa fa-eye-slash";
+    } else {
+      password.current.setAttribute("type", "password");
+      i.current.classList = "fa fa-eye";
+      toggle.current.classList.remove("hide");
+    }
+  };
   return (
     <>
       <div className="container">
@@ -94,17 +109,21 @@ const Signup = () => {
                       ? "form-control is-invalid"
                       : "form-control"
                   }
+                  ref={password}
                   maxLength={10}
                   onChange={formik.handleChange}
                   style={{ backgroundColor: "#F5F7FA" }}
                   name="password"
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.password && (
-                  <div style={{ color: "red" }} className="my-2">
-                    {formik.errors.password}
-                  </div>
-                )}
+                <div
+                  id="toggle"
+                  ref={toggle}
+                  onClick={showHide}
+                  className="gose pe-4"
+                >
+                  <i ref={i} className="fa fa-eye" aria-hidden="true"></i>
+                </div>
                 <label>&#x1F512;&nbsp; Your password</label>
                 <button
                   type="submit"

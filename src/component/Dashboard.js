@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import download from "./assets/download.jfif";
-import Billionaire from "./assets/Teni - Billionaire (NetNaija.com).mp3";
-import TeniBillionaire from "./assets/Teni - Billionaire (NetNaija.com).mp4";
 
 const Dashboard = () => {
   const [allUser, setallUser] = useState([]);
@@ -20,7 +18,7 @@ const Dashboard = () => {
       setcurrentuserdetails(JSON.parse(localStorage.users));
       let email = JSON.parse(localStorage.users).email;
       let index = JSON.parse(localStorage.wwtbam).findIndex(
-        (x) => x.email == email
+        (x) => x.email === email
       );
       setcustomer(AllUser[index]);
     } else {
@@ -48,12 +46,12 @@ const Dashboard = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <span className="navbar-text">
-                <button
-                  className="btn btn-success form-control py-3 mt-3 asd"
-                  onClick={logout}
-                >
-                  Log-Out
-                </button>
+              <button
+                className="btn btn-success form-control asd"
+                onClick={logout}
+              >
+                Log-Out
+              </button>
             </span>
           </div>
         </div>
@@ -65,22 +63,30 @@ const Dashboard = () => {
               <h2 className="py-1">${customer.score}</h2>
             </div>
             <div className="col-12">
-              <audio className="w-100" controls loop src={Billionaire} />
-              {/* <img src={download} alt="" className="img-fluid" /> */}
-              <video
-                className="w-100 asd"
-                muted
-                loop
-                autoPlay
-                src={TeniBillionaire}
-              />
-            </div>
-            <div className="col-12">
-              <Link to="/Takequiz">
-                <button className="btn btn-success form-control py-3 mt-3 asd">
-                  TAKE QUIZ
-                </button>
-              </Link>
+              <img src={download} alt="" className="img-fluid" />
+              <div className="row">
+                <div className="col-12 col-md-4">
+                  <Link to="/Takequiz">
+                    <button className="btn btn-success form-control py-3 mt-3 asd">
+                      TAKE QUIZ
+                    </button>
+                  </Link>
+                </div>
+                <div className="col-12 col-md-4">
+                  <Link to="/Takequiz">
+                    <button className="btn btn-success form-control py-3 mt-3 asd">
+                      ADMIN
+                    </button>
+                  </Link>
+                </div>
+                <div className="col-12 col-md-4">
+                  <Link to="/Takequiz">
+                    <button className="btn btn-success form-control py-3 mt-3 asd">
+                      RESULT
+                    </button>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </center>
