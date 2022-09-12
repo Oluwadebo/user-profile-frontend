@@ -5,6 +5,7 @@ import NotFound from "./component/NotFound";
 import Signin from "./component/Signin";
 import Dashboard from "./component/Dashboard";
 import Takequiz from "./component/Takequiz";
+import Admin from "./component/admin";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/Signin" element={<Signin />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Takequiz" element={<Takequiz />} />
+        <Route path="/Admin" element={<Admin />} />
         <Route path="/Signup" element={<Navigate to="/" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

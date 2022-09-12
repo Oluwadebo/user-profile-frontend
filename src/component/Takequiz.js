@@ -27,11 +27,6 @@ const Takequiz = () => {
   return (
     <>
       <div className="container text-light">
-        <center>
-          <div className="asd">
-            <h5 className="py-2">0</h5>
-          </div>
-        </center>
         <div className="row my-2">
           <div className="col-12">
             <h2>
