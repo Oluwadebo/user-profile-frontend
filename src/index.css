@@ -5,50 +5,19 @@ body {
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  background-color: #f0f0f0;
   transition: 0.5s;
 }
 
 code {
   font-family: "Courier New", monospace;
 }
-
-.asd {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
-  border-radius: 10px;
-  border: none;
-}
-.sig {
-  color: #1dcf9f;
-  opacity: 0.8;
-  float: right;
+.stye {
   text-decoration: none;
 }
-.dsa {
-  background: rgba(248, 252, 3, 0.7);
-  backdrop-filter: blur(5px);
-  border-radius: 30px;
-  border: none;
+.colo {
+  color: red;
 }
-.asda {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(5px);
-  border: none;
-}
-.sd {
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(5px);
-}
-.gose {
-  float: right;
-  animation: mover 2s infinite alternate;
-}
-@keyframes mover {
-  0% {
-    transform: translateY(-40px);
-  }
-  100% {
-    transform: translateY(-40px);
-  }
+.clo {
+  color: darkblue;
 }

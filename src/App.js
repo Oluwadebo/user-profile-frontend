@@ -1,22 +1,17 @@
 import "./App.css";
-import { Routes, Route,Navigate } from "react-router-dom";
-import Signup from "./component/Signup";
+import { Routes, Route, Navigate } from "react-router-dom";
 import NotFound from "./component/NotFound";
-import Signin from "./component/Signin";
-import Dashboard from "./component/Dashboard";
-import Takequiz from "./component/Takequiz";
-import Admin from "./component/admin";
+import Todo from "./component/Todo";
+import Navbar from "./component/Navbar";
+import Displaybackend from "./component/Displaybackend";
 
 function App() {
   return (
     <>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Signup />} />
-        <Route path="/Signin" element={<Signin />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/Takequiz" element={<Takequiz />} />
-        <Route path="/Admin" element={<Admin />} />
-        <Route path="/Signup" element={<Navigate to="/" />} />
+        <Route path="/" element={<Displaybackend />} />
+        <Route path="/Todo" element={<Todo />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
